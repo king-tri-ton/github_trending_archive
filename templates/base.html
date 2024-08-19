@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}GitHub Trending Archive{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header, footer {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #ccc 1px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        pre {
+            background: #eee;
+            border-left: 4px solid #333;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        footer a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}GitHub Trending Archive{% endblock %}</h1>
+    </header>
+    <div class="container content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 GitHub Trending Archive</p>
+    </footer>
+</body>
+</html>

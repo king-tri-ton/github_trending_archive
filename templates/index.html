@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}GitHub Trending Archive - Dates{% endblock %}
+
+{% block content %}
+    <h1>Trending Dates</h1>
+    <ul>
+        {% for date in dates %}
+        <li><a href="/trends/{{ date }}">{{ date }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

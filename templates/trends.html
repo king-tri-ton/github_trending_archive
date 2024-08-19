@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}GitHub Trending Archive - Trends for {{ date }}{% endblock %}
+
+{% block content %}
+    <h1>Trends for {{ date }}</h1>
+
+    {% for language, projects in projects_by_language.items() %}
+    <h2>{{ language }}</h2>
+    <ul>
+        {% for project_name, project_url, description in projects %}
+        <li>
+            <a href="{{ project_url }}" target="_blank">{{ project_name }}</a><br>
+            <small>{{ description }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+{% endblock %}
