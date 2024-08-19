@@ -1,3 +1,7 @@
+/build/
+/dist/
+/venv/
 __pycache__/
+*.spec
 *.log
 *.db

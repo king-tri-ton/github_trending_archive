@@ -5,17 +5,27 @@ import time
 import webbrowser
 import signal
 import os
+import sys
 import datetime
 from scraper import scrape
 from webapp import app
-from database import create_table
+from database import create_table, get_distinct_dates
 
 # Глобальный флаг для остановки
 stop_event = threading.Event()
 
+def resource_path(relative_path):
+    """ Получает путь к ресурсам, как в режиме разработки, так и в собранном виде """
+    try:
+        # Если запущено как исполняемый файл
+        base_path = sys._MEIPASS
+    except AttributeError:
+        # Если запущено из исходного кода
+        base_path = os.path.dirname(__file__)
+    return os.path.join(base_path, relative_path)
+
 def create_image():
-    # Загрузка изображения из файла
-    return Image.open('github.png')
+    return Image.open(resource_path('github.ico'))
 
 def run_flask():
     # Запускаем Flask приложение
@@ -24,6 +34,15 @@ def run_flask():
 def scrape_daily():
     while not stop_event.is_set():
         now = datetime.datetime.now()
+        date_str = now.strftime('%d.%m.%Y')
+        
+        # Проверяем, есть ли записи с сегодняшней датой
+        dates = [d[0] for d in get_distinct_dates()]
+        
+        if date_str not in dates:
+            # Сбор данных, если записи отсутствуют
+            scrape()
+
         # Рассчитываем время до следующего запуска (23:00)
         next_run = now.replace(hour=23, minute=0, second=0, microsecond=0)
         if now >= next_run:
@@ -32,9 +51,6 @@ def scrape_daily():
         # Вычисляем разницу во времени
         sleep_duration = (next_run - now).total_seconds()
         time.sleep(sleep_duration)
-        
-        # Запускаем парсер
-        scrape()
 
 def on_quit(icon, item):
     stop_event.set()
