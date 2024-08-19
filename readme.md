@@ -47,13 +47,21 @@ GitHub Trending Archive is an application that daily collects information about 
 - **System Tray:** Right-click the icon in the system tray to open or close the Flask application.
 - **Web Interface:** Open your browser and go to `http://127.0.0.1:5000` to view available trend dates and information.
 
+## Screenshots
+
+Here are some screenshots of the web application:
+
+1. ![Screenshot_67](https://github.com/user-attachments/assets/c5c64667-72f4-463a-9ff4-078bf75d9071)
+2. ![Screenshot_68](https://github.com/user-attachments/assets/c1ea8b75-ba77-4ec2-990a-fdc42478fad2)
+3. ![Screenshot_69](https://github.com/user-attachments/assets/46aca1b7-64de-42da-99f6-a605ff0bb3cd)
+
 ## Future Plans
 
 1. **Trend Analysis with AI:**
-   Integration with the OpenAI API is planned for analyzing and providing additional insights on trends.
+   I plan to integrate with the OpenAI API for analyzing and providing additional insights on trends.
 
 2. **Installer with Configuration Wizard:**
-  I plan to create an installer with a graphical configuration tool to allow users to select programming languages and adjust other settings without editing files manually.
+   I plan to create an installer with a graphical configuration tool to allow users to select programming languages and adjust other settings without editing files manually.
 
 ## License
 
@@ -61,10 +69,8 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 
 ## Author's Note
 
-I came across an interesting project called [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive) but couldn't get it running on my Windows. I liked the project’s website ([archive](https://archive.faabli.com/)), and after some thought, I decided to create a similar project entirely in Python. I think it turned out great. Thanks to @frodeaa for the inspiration!
+I came across an interesting project called [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive) but couldn't get it running on my Windows. I liked the project’s website ([archive](https://archive.faabli.com/)), and after some thought, I decided to create a similar project entirely in Python. I think it turned out great. Thanks to [@frodeaa](https://github.com/frodeaa) for the inspiration!
 
 ## Contacts
 
 If you have any questions or suggestions, feel free to contact me via [telegram](https://t.me/king_triton).
-
----
