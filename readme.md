@@ -1,5 +1,7 @@
 # GitHub Trending Archive
 
+![github](https://github.com/user-attachments/assets/142a537b-b895-4df7-b2ed-bdec6f224cfa)
+
 GitHub Trending Archive is an application that daily collects information about popular repositories on GitHub and stores it in a database. With this application, you can track changes in trends for selected programming languages.
 
 ## Project Structure
@@ -40,7 +42,7 @@ GitHub Trending Archive is an application that daily collects information about 
    python app.py
    ```
 
-   This will start the Flask server and the system tray icon. The application will automatically collect trend data daily at 11:00 PM.
+   This will start the Flask server and the system tray icon. The application will automatically collect trend data daily at 03:00 AM.
 
 ## Usage
 

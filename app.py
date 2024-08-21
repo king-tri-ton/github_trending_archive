@@ -65,7 +65,7 @@ def setup(icon):
     icon.visible = True
 
 def start_icon():
-    icon = pystray.Icon('Trends', create_image())
+    icon = pystray.Icon('Trends', create_image(), title="GitHub Trends Archive by king_tri_ton")
     icon.menu = pystray.Menu(
         pystray.MenuItem('Open Web App', on_open_url),
         pystray.MenuItem('Quit', on_quit)
