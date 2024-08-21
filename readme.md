@@ -27,14 +27,17 @@ GitHub Trending Archive is an application that daily collects information about 
    ```
 
 3. **Configure settings:**
-   Edit the `config.py` file to specify your OpenAI API token and the list of programming languages. For example:
+
+   In version 1.0.3 and later, create a `lang.txt` file in the root directory of the project and list the programming languages to monitor. Example content for `lang.txt`:
+   ```
+   python
+   php
+   javascript
+   ```
+
+   In the `config.py` file, specify your OpenAI API token:
    ```python
    AI_TOKEN = 'sk-your_token'
-   LANGUAGE = [
-       "python",
-       "php",
-       "javascript"
-   ]
    ```
 
 4. **Run the application:**
