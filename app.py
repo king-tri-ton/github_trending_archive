@@ -7,12 +7,20 @@ import signal
 import os
 import sys
 import datetime
+import ctypes  # Для проверки прав администратора и перезапуска
 from scraper import scrape
 from webapp import app
 from database import create_table, get_distinct_dates
 
 # Глобальный флаг для остановки
 stop_event = threading.Event()
+
+def is_admin():
+    """Проверяет, запущено ли приложение с правами администратора."""
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 
 def resource_path(relative_path):
     """ Получает путь к ресурсам, как в режиме разработки, так и в собранном виде """
@@ -73,6 +81,12 @@ def start_icon():
     icon.run(setup)
 
 if __name__ == "__main__":
+    # Проверка прав администратора
+    if not is_admin():
+        # Перезапуск программы с правами администратора
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+        sys.exit()
+
     # Создаем таблицу в базе данных
     create_table()
 
