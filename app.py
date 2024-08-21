@@ -43,8 +43,8 @@ def scrape_daily():
             # Сбор данных, если записи отсутствуют
             scrape()
 
-        # Рассчитываем время до следующего запуска (23:00)
-        next_run = now.replace(hour=23, minute=0, second=0, microsecond=0)
+        # Рассчитываем время до следующего запуска (03:00)
+        next_run = now.replace(hour=3, minute=0, second=0, microsecond=0)
         if now >= next_run:
             next_run += datetime.timedelta(days=1)
         
