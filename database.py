@@ -1,7 +1,14 @@
 import sqlite3
+import os
+from config import ensure_db_file
+
+# Убедитесь, что файл базы данных существует
+ensure_db_file()
 
 def create_connection():
-    return sqlite3.connect('trends.db')
+    # Получаем путь к базе данных из переменной окружения
+    db_path = os.getenv('DATABASE_PATH')
+    return sqlite3.connect(db_path)
 
 def create_table():
     conn = create_connection()

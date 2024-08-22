@@ -1,5 +1,7 @@
+import os
 import requests
 from datetime import datetime
+from config import get_languages
 from database import insert_trends
 from bs4 import BeautifulSoup
 
@@ -24,14 +26,9 @@ def parse_trending_repos(html, date, language):
                 
                 insert_trends(date, language, project_name, description, project_url)
 
-def load_languages():
-    with open('langs.txt', 'r') as file:
-        languages = [line.strip() for line in file.readlines()]
-    return languages
-
 def scrape():
     date = datetime.now().strftime('%d.%m.%Y')
-    languages = load_languages()
+    languages = get_languages()  # Получаем языки из переменной окружения
     for language in languages:
         html = fetch_trending_repos(language)
         parse_trending_repos(html, date, language)

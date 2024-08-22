@@ -2,14 +2,14 @@
 
 ![github](https://github.com/user-attachments/assets/142a537b-b895-4df7-b2ed-bdec6f224cfa)
 
-GitHub Trending Archive is an application that daily collects information about popular repositories on GitHub and stores it in a database. With this application, you can track changes in trends for selected programming languages.
+GitHub Trending Archive is an application that collects information about popular GitHub repositories daily and saves it to a database. With this application, you can track changes in trends for selected programming languages.
 
 ## Project Structure
 
-- **app.py**: The main script that launches the Flask application and the system tray icon. It also initiates daily trend parsing.
-- **config.py**: Configuration parameters, including the API token (needed in the future) and a list of programming languages.
+- **app.py**: The main script that launches the Flask application and the system tray icon. It also initiates daily trend data collection.
+- **config.py**: Configuration parameters, including the path to the `.env` file and application settings.
 - **database.py**: Functions for interacting with the SQLite database, including table creation and data insertion.
-- **scraper.py**: Script for scraping the GitHub trends page and saving data to the database.
+- **scraper.py**: A script for scraping data from GitHub trending pages and saving it to the database.
 - **webapp.py**: Flask application for displaying trend data through a web interface.
 - **templates/**: Directory containing HTML templates for the web application.
 
@@ -28,16 +28,11 @@ GitHub Trending Archive is an application that daily collects information about 
 
 3. **Configure settings:**
 
-   In version 1.0.3 and later, create a `lang.txt` file in the root directory of the project and list the programming languages to monitor. Example content for `lang.txt`:
+   For version 1.0.4 and later, create a `.env` file in the `C:\Program Files\King-Triton\GTA` directory and specify the parameters:
    ```
-   python
-   php
-   javascript
-   ```
-
-   In the `config.py` file, specify your OpenAI API token:
-   ```python
-   AI_TOKEN = 'sk-your_token'
+   SCAN_TIME=17:00
+   DATABASE_PATH=C:\\Program Files\\King-Triton\\GTA\\trends.db
+   LANGUAGES=python,java,javaScript
    ```
 
 4. **Run the application:**
@@ -45,12 +40,12 @@ GitHub Trending Archive is an application that daily collects information about 
    python app.py
    ```
 
-   This will start the Flask server and the system tray icon. The application will automatically collect trend data daily at 03:00 AM.
+   This will start the Flask server and the system tray icon. The application will automatically collect trend data daily at 03:00.
 
 ## Usage
 
-- **System Tray:** Right-click the icon in the system tray to open or close the Flask application.
-- **Web Interface:** Open your browser and go to `http://127.0.0.1:5000` to view available trend dates and information.
+- **System Tray:** Right-click the icon in the system tray to open or close the web application.
+- **Web Interface:** Open a browser and go to `http://127.0.0.1:5000` to view available trend dates and information.
 
 ## Screenshots
 
@@ -62,20 +57,18 @@ Here are some screenshots of the web application:
 
 ## Future Plans
 
-1. **Trend Analysis with AI:**
-   I plan to integrate with the OpenAI API for analyzing and providing additional insights on trends.
+1. **Trend Analysis with AI:** Integration with OpenAI API for trend analysis and providing additional insights.
 
-2. **Installer with Configuration Wizard:**
-   I plan to create an installer with a graphical configuration tool to allow users to select programming languages and adjust other settings without editing files manually.
+2. **Installer with Configuration Wizard:** Creating an installer with a graphical configuration tool for selecting programming languages and setting other parameters without manually editing files.
 
 ## License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
-## Author's Note
+## Author’s Note
 
-I came across an interesting project called [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive) but couldn't get it running on my Windows. I liked the project’s website ([archive](https://archive.faabli.com/)), and after some thought, I decided to create a similar project entirely in Python. I think it turned out great. Thanks to [@frodeaa](https://github.com/frodeaa) for the inspiration!
+I came across an interesting project called [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive) but couldn't get it running on Windows. I liked the project’s website ([archive](https://archive.faabli.com/)), and after some thought, I decided to create a similar project entirely in Python. I think it turned out great. Thanks to [@frodeaa](https://github.com/frodeaa) for the inspiration!
 
-## Contacts
+## Contact
 
-If you have any questions or suggestions, feel free to contact me via [telegram](https://t.me/king_triton).
+If you have any questions or suggestions, feel free to reach out to me via [telegram](https://t.me/king_triton).
