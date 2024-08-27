@@ -44,7 +44,7 @@ def run_flask():
     app.run(port=5000, use_reloader=False)
 
 def scrape_daily():
-    """Запускает ежедневный сбор данных и проверяет наличие новых записей."""
+    """Запускает ежедневный сбор данных в 17:00, если нет записей на текущую дату."""
     scan_time_str = os.getenv('SCAN_TIME', '17:00')
     scan_hour, scan_minute = map(int, scan_time_str.split(':'))
 
@@ -52,15 +52,18 @@ def scrape_daily():
         now = datetime.datetime.now()
         date_str = now.strftime('%d.%m.%Y')
 
-        if date_str not in [d[0] for d in get_distinct_dates()]:
-            scrape()
-
+        # Определение следующего запуска
         next_run = now.replace(hour=scan_hour, minute=scan_minute, second=0, microsecond=0)
         if now >= next_run:
+            # Если текущее время уже прошло, запускаем на следующий день
             next_run += datetime.timedelta(days=1)
         
         sleep_duration = (next_run - now).total_seconds()
-        time.sleep(sleep_duration)
+        time.sleep(sleep_duration)  # Ждём до следующего запуска
+        
+        # После ожидания, проверяем наличие записей на текущую дату
+        if date_str not in [d[0] for d in get_distinct_dates()]:
+            scrape()
 
 def on_quit(icon, item):
     """Обработчик для выхода из приложения."""
