@@ -44,26 +44,29 @@ def run_flask():
     app.run(port=5000, use_reloader=False)
 
 def scrape_daily():
-    """Запускает ежедневный сбор данных в 17:00, если нет записей на текущую дату."""
+    """Запускает ежедневное сканирование в 17:00, если нет записей за текущий день."""
     scan_time_str = os.getenv('SCAN_TIME', '17:00')
     scan_hour, scan_minute = map(int, scan_time_str.split(':'))
 
     while not stop_event.is_set():
         now = datetime.datetime.now()
         date_str = now.strftime('%d.%m.%Y')
+        scan_time = datetime.time(scan_hour, scan_minute)
 
-        # Определение следующего запуска
-        next_run = now.replace(hour=scan_hour, minute=scan_minute, second=0, microsecond=0)
-        if now >= next_run:
-            # Если текущее время уже прошло, запускаем на следующий день
-            next_run += datetime.timedelta(days=1)
-        
+        # Определяем время следующего запуска в 17:00 следующего дня
+        if now.time() >= scan_time:
+            next_run = now.replace(hour=scan_hour, minute=scan_minute, second=0, microsecond=0) + datetime.timedelta(days=1)
+        else:
+            next_run = now.replace(hour=scan_hour, minute=scan_minute, second=0, microsecond=0)
+
+        # Проверяем записи за текущий день
+        if now.time() >= scan_time:
+            if date_str not in [d[0] for d in get_distinct_dates()]:
+                scrape()  # Выполняем сканирование
+
+        # Ожидание до следующего запуска
         sleep_duration = (next_run - now).total_seconds()
-        time.sleep(sleep_duration)  # Ждём до следующего запуска
-        
-        # После ожидания, проверяем наличие записей на текущую дату
-        if date_str not in [d[0] for d in get_distinct_dates()]:
-            scrape()
+        time.sleep(sleep_duration)
 
 def on_quit(icon, item):
     """Обработчик для выхода из приложения."""
@@ -90,8 +93,8 @@ def start_icon():
 
 def main():
     """Основная логика приложения."""
-    ensure_env_file()
-    load_env()
+    ensure_env_file()  # Создаем файл .env, если его нет
+    load_env()  # Загружаем переменные окружения
     create_table()
 
     threading.Thread(target=scrape_daily, daemon=True).start()

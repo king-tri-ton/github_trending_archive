@@ -8,7 +8,7 @@ def index():
     dates = get_distinct_dates()
     return render_template('index.html', dates=[d[0] for d in dates])
 
-@app.route('/trends/<date>')
+@app.route('/<date>')
 def trends(date):
     projects = get_trends_by_date(date)
 

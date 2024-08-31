@@ -1,74 +1,74 @@
-# GitHub Trending Archive
+# Архив трендов GitHub
 
 ![github](https://github.com/user-attachments/assets/142a537b-b895-4df7-b2ed-bdec6f224cfa)
 
-GitHub Trending Archive is an application that collects information about popular GitHub repositories daily and saves it to a database. With this application, you can track changes in trends for selected programming languages.
+Архив трендов GitHub — это приложение, которое ежедневно собирает информацию о популярных репозиториях GitHub и сохраняет её в базу данных. С помощью этого приложения вы можете отслеживать изменения трендов для выбранных языков программирования.
 
-## Project Structure
+## Структура проекта
 
-- **app.py**: The main script that launches the Flask application and the system tray icon. It also initiates daily trend data collection.
-- **config.py**: Configuration parameters, including the path to the `.env` file and application settings.
-- **database.py**: Functions for interacting with the SQLite database, including table creation and data insertion.
-- **scraper.py**: A script for scraping data from GitHub trending pages and saving it to the database.
-- **webapp.py**: Flask application for displaying trend data through a web interface.
-- **templates/**: Directory containing HTML templates for the web application.
+- **app.py**: Основной скрипт, который запускает приложение Flask и иконку в системном трее. Также инициирует сбор данных о трендах ежедневно.
+- **config.py**: Параметры конфигурации, включая путь к файлу `.env` и настройки приложения.
+- **database.py**: Функции для взаимодействия с базой данных SQLite, включая создание таблиц и вставку данных.
+- **scraper.py**: Скрипт для сбора данных со страниц трендов GitHub и их сохранения в базу данных.
+- **webapp.py**: Приложение Flask для отображения данных о трендах через веб-интерфейс.
+- **templates/**: Директория, содержащая HTML-шаблоны для веб-приложения.
 
-## Installation and Setup
+## Установка и настройка
 
-1. **Clone the repository:**
+1. **Клонируйте репозиторий:**
    ```bash
    git clone https://github.com/king-tri-ton/github_trending_archive.git
    cd github_trending_archive
    ```
 
-2. **Install dependencies:**
+2. **Установите зависимости:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure settings:**
+3. **Настройте параметры:**
 
-   For version 1.0.4 and later, create a `.env` file in the `C:\Program Files\King-Triton\GTA` directory and specify the parameters:
+   Для версии 1.0.4 и более поздних версий создайте файл `.env` в директории `C:\Program Files\King-Triton\GTA` и укажите параметры:
    ```
    SCAN_TIME=17:00
    DATABASE_PATH=C:\\Program Files\\King-Triton\\GTA\\trends.db
    LANGUAGES=python,java,javaScript
    ```
 
-4. **Run the application:**
+4. **Запустите приложение:**
    ```bash
    python app.py
    ```
 
-   This will start the Flask server and the system tray icon. The application will automatically collect trend data daily at 03:00.
+   Это запустит сервер Flask и иконку в системном трее. Приложение будет автоматически собирать данные о трендах ежедневно в 03:00.
 
-## Usage
+## Использование
 
-- **System Tray:** Right-click the icon in the system tray to open or close the web application.
-- **Web Interface:** Open a browser and go to `http://127.0.0.1:5000` to view available trend dates and information.
+- **Системный трей:** Щелкните правой кнопкой мыши по иконке в системном трее, чтобы открыть или закрыть веб-приложение.
+- **Веб-интерфейс:** Откройте браузер и перейдите по адресу `http://127.0.0.1:5000`, чтобы просмотреть доступные даты трендов и информацию.
 
-## Screenshots
+## Скриншоты
 
-Here are some screenshots of the web application:
+Вот несколько скриншотов веб-приложения:
 
-1. ![Screenshot_67](https://github.com/user-attachments/assets/c5c64667-72f4-463a-9ff4-078bf75d9071)
+1. ![Screenshot_67](https://github.com/user-attachments/assets/7f9f5bad-c06c-4658-93e4-ec02ebf9f17e)
 2. ![Screenshot_68](https://github.com/user-attachments/assets/c1ea8b75-ba77-4ec2-990a-fdc42478fad2)
 3. ![Screenshot_69](https://github.com/user-attachments/assets/46aca1b7-64de-42da-99f6-a605ff0bb3cd)
 
-## Future Plans
+## Будущие планы
 
-1. **Trend Analysis with AI:** Integration with OpenAI API for trend analysis and providing additional insights.
+1. **Анализ трендов с помощью ИИ:** Интеграция с API OpenAI для анализа трендов и предоставления дополнительных инсайтов.
 
-2. **Installer with Configuration Wizard:** Creating an installer with a graphical configuration tool for selecting programming languages and setting other parameters without manually editing files.
+2. **Установщик с мастером конфигурации:** Создание установщика с графическим инструментом конфигурации для выбора языков программирования и настройки других параметров без редактирования файлов вручную.
 
-## License
+## Лицензия
 
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+Этот проект лицензирован под [MIT License](https://choosealicense.com/licenses/mit/).
 
-## Author’s Note
+## Заметка автора
 
-I came across an interesting project called [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive) but couldn't get it running on Windows. I liked the project’s website ([archive](https://archive.faabli.com/)), and after some thought, I decided to create a similar project entirely in Python. I think it turned out great. Thanks to [@frodeaa](https://github.com/frodeaa) for the inspiration!
+Я наткнулся на интересный проект под названием [GitHub Trending Archive](https://github.com/frodeaa/github_trending_archive), но не смог запустить его на Windows. Мне понравился сайт проекта ([archive](https://archive.faabli.com/)), и после некоторых размышлений я решил создать подобный проект полностью на Python. Думаю, получилось отлично. Спасибо [@frodeaa](https://github.com/frodeaa) за вдохновение!
 
-## Contact
+## Контакт
 
-If you have any questions or suggestions, feel free to reach out to me via [telegram](https://t.me/king_triton).
+Если у вас есть вопросы или предложения, не стесняйтесь обращаться ко мне через [telegram](https://t.me/king_triton).

@@ -1,9 +1,12 @@
 /build/
 /dist/
 /venv/
+/old/
 __pycache__/
 *.log
 *.db
 installer.py
 test.py
 .env
+.venv
+*spec

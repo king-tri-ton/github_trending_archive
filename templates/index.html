@@ -6,7 +6,7 @@
     <h1>Trending Dates</h1>
     <ul>
         {% for date in dates %}
-        <li><a href="/trends/{{ date }}">{{ date }}</a></li>
+        <li><a href="/{{ date }}">{{ date }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
