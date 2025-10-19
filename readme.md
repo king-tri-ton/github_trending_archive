@@ -63,7 +63,7 @@
 
 ## Лицензия
 
-Этот проект лицензирован под [MIT License](https://choosealicense.com/licenses/mit/).
+Этот проект лицензирован под [MIT](LICENSE).
 
 ## Заметка автора
 
